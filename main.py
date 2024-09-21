@@ -38,9 +38,11 @@ if __name__=="__main__":
 
     grid = pv.StructuredGrid(X, Y, Z_total)
 
+    grid.point_data['Height'] = Z_total.flatten()
+
     # Delaunay 2D to stitch the points into a flat surface
 
     plotter = pv.Plotter()
-    plotter.add_mesh(grid, show_edges=False, scalars=None, cmap="winter")
+    plotter.add_mesh(grid, show_edges=False, scalars=grid.points[:, 2], cmap="winter")
     plotter.export_obj('mesh.obj')
     plotter.show()
