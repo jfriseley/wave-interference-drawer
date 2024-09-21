@@ -5,7 +5,7 @@ from random import uniform
 # Define the grid dimensions
 WIDTH_PIXELS = 1000  # Number of points along x-axis
 HEIGHT_PIXELS = 1000  # Number of points along y-axis
-NUM_WAVES = 20
+NUM_WAVES = 15
 
 def ripple_function_with_decay(x, y, x0=0, y0=0, A=0.1, k=20, decay_rate=2.0):
     # Compute radial distance from the center (x0, y0)
@@ -43,6 +43,6 @@ if __name__=="__main__":
     # Delaunay 2D to stitch the points into a flat surface
 
     plotter = pv.Plotter()
-    plotter.add_mesh(grid, show_edges=False, scalars=grid.points[:, 2], cmap="winter")
+    plotter.add_mesh(grid, show_edges=False, scalars=grid.points[:, 2], cmap="bone")
     plotter.export_obj('mesh.obj')
     plotter.show()
